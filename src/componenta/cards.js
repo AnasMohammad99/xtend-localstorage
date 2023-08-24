@@ -8,14 +8,14 @@ const GridWrapper = styled(Grid)(({ theme }) => ({
     display:'flex',
     justifyContent:'center'
   }));
-const Cards = ({searchUsers}) => {
+const Cards = ({eStates}) => {
   return (
     <GridWrapper container spacing={3}>
         {
-            searchUsers.map((user)=>{
+            eStates.map((estate)=>{
                 return(
-                    <Grid key={user.id} item>
-                        <CardComponent user={user} />
+                    <Grid key={estate.id} item>
+                        <CardComponent estate={estate} />
                     </Grid>
                 )
             })

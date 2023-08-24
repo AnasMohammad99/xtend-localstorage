@@ -5,22 +5,22 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function CardComponent({user}) {
+export default function CardComponent({estate}) {
   return (
     <Card sx={{ width:300, height:300 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image={user.image_url}
-          alt={user.name}
+          image={estate.image}
+          alt={estate.area}
         />
         <CardContent>
           <Typography gutterBottom variant="h5">
-            {user.name}
+            {estate.area}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {user.tagline}
+            {estate.address}
           </Typography>
         </CardContent>
       </CardActionArea>
