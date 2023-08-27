@@ -8,14 +8,14 @@ const GridWrapper = styled(Grid)(({ theme }) => ({
     display:'flex',
     justifyContent:'center'
   }));
-const Cards = ({eStates}) => {
+const ProfCards = ({profData}) => {
   return (
     <GridWrapper container spacing={3}>
         {
-            eStates.map((estate)=>{
+            profData.map((prof)=>{
                 return(
-                    <Grid key={estate.id} item>
-                        <CardComponent estate={estate} />
+                    <Grid key={prof.name} item>
+                        <CardComponent prof={prof} />
                     </Grid>
                 )
             })
@@ -24,4 +24,4 @@ const Cards = ({eStates}) => {
   )
 }
 
-export default Cards
+export default ProfCards

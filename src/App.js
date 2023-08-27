@@ -1,18 +1,20 @@
 import { useState } from 'react';
-import Cards from './componenta/cards';
+import Cards from './components/collage-card/cards';
 import Layout from './layout';
 import data from "./data.json";
-import ModalComponent from './componenta/modal';
+import { AppBar, Typography } from '@mui/material';
+import ProfCards from './components/prof-card/cards';
 function App() {
-  const [eStates, setEStates] = useState(data.property);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [cData, setCData] = useState(data.collage);
+  const [profData, setProfData] = useState(data.prof);
   return (
     <div className="App">
-      <Layout handleOpen={handleOpen} />
-      <ModalComponent setEStates={setEStates} setOpen={setOpen} open={open} handleClose={handleClose} />
-      <Cards eStates={eStates} />
+      <Layout  />
+      <Cards cData={cData} />
+      <AppBar position="static">
+      <Typography variant="h4" style={{ textAlign:"center" }} color='white'>Meet your instructor</Typography>
+      </AppBar>
+      <ProfCards profData={profData} />
     </div>
   );
 }
