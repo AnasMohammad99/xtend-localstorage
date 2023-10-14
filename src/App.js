@@ -1,21 +1,45 @@
-import { useState } from 'react';
-import Cards from './components/collage-card/cards';
+import { BrowserRouter } from 'react-router-dom';
 import Layout from './layout';
-import data from "./data.json";
-import { AppBar, Typography } from '@mui/material';
-import ProfCards from './components/prof-card/cards';
+import { useEffect, useState } from 'react';
 function App() {
-  const [cData, setCData] = useState(data.collage);
-  const [profData, setProfData] = useState(data.prof);
+  const [news, setNews] = useState("")
+  const [Crypto, setCrypto] = useState("")
+  const [weather, setweather] = useState("");
+  useEffect(() => {
+    try {
+      async function fetchCrypto() {
+        const response = await fetch("http://localhost:5000/api/v1/crypto/")
+        const data = await response.json();
+        setCrypto(data)
+        // console.log(data);
+        // console.log(Crypto);
+        return data
+      }
+      async function fetchNews() {
+        const response = await fetch("http://localhost:5000/api/v1/news/")
+        const data = await response.json();
+        setNews(data)
+        return data
+      }
+      async function fetchWeather() {
+        const response = await fetch("http://localhost:5000/api/v1/weather/")
+        const data = await response.json();
+        setweather(data)
+        return data
+      }
+      fetchCrypto();
+      fetchNews(); 
+      fetchWeather();
+    } catch (error) {
+      console.log(error.message);
+    }
+  },[])
   return (
+    <BrowserRouter>
     <div className="App">
-      <Layout  />
-      <Cards cData={cData} />
-      <AppBar position="static">
-      <Typography variant="h4" style={{ textAlign:"center" }} color='white'>Meet your instructor</Typography>
-      </AppBar>
-      <ProfCards profData={profData} />
+      <Layout news={news} Crypto={Crypto} weather={weather}  />
     </div>
+    </BrowserRouter>
   );
 }
 
