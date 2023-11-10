@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
 import { Box, Grid } from '@mui/material';
 import React from 'react'
 import WeatherCard from './WeatherCard';
 import { Spin } from 'antd';
+import styled from 'styled-components';
 
 const WeatherApp = ({weather}) => {
   const Wrapper = styled(Box)({

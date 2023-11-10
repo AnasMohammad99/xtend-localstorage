@@ -1,6 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './layout';
 import { useEffect, useState } from 'react';
+
 function App() {
   const [news, setNews] = useState("")
   const [Crypto, setCrypto] = useState("")
@@ -27,9 +28,9 @@ function App() {
         setweather(data)
         return data
       }
-      fetchCrypto();
-      fetchNews(); 
-      fetchWeather();
+      // fetchCrypto();
+      // fetchNews(); 
+      // fetchWeather();
     } catch (error) {
       console.log(error.message);
     }

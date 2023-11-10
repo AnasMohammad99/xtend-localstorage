@@ -1,7 +1,7 @@
 import React from 'react'
 import { Spin, Table, Tag } from 'antd';
-import styled from '@emotion/styled';
 import { Box } from '@mui/material';
+import styled from 'styled-components';
 
 const CurrencyApp = ({Crypto}) => {
 const columns = [

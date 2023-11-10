@@ -47,7 +47,7 @@ const App = ({news, Crypto, weather}) => {
           <Avatar />
           <Typography>Jon Doe</Typography>
         </Box>
-        {
+        {/* {
           Crypto[0]?        <Box style={{
             display:"flex",
             justifyContent:"space-between",
@@ -60,7 +60,7 @@ const App = ({news, Crypto, weather}) => {
               color:"red"
             }}>{Crypto[0].quote.USD.volume_change_24h}</Typography>
           </Box>:<Spin />
-        }
+        } */}
       </Header>
       <Layout hasSider>
         <Sider theme="dark" style={siderStyle}><AppSidebar /></Sider>

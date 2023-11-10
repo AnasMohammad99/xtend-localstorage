@@ -1,10 +1,8 @@
 import React from 'react'
-import { Card, Carousel, Col, Flex, Image, Row, Spin } from 'antd';
+import { Spin } from 'antd';
 import { Box, Grid } from '@mui/material';
-import styled from '@emotion/styled';
-import Meta from 'antd/es/card/Meta';
-import Item from 'antd/es/list/Item';
 import NewsCard from './NewsCard';
+import styled from 'styled-components';
 
 const NewsApp = ({news}) => {
  
