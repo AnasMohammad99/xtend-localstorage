@@ -1,6 +1,5 @@
 import {
   ContainerOutlined,
-  DesktopOutlined,
   PieChartOutlined,
 } from '@ant-design/icons';
 import { Menu } from 'antd';
@@ -18,8 +17,6 @@ function getItem(label, key, icon, children, type) {
 }
 const items = [
   getItem(<Link to={AppRoute.dashboard}>Dashboard</Link>, 'dashboard', <PieChartOutlined />),
-  getItem(<Link to={AppRoute.news}>news</Link>, 'news', <DesktopOutlined />),
-  getItem(<Link to={AppRoute.weather}>weather</Link>, 'weather', <ContainerOutlined />),
   getItem(<Link to={AppRoute.currency}>currency</Link>, 'currency', <ContainerOutlined />),
 ];
 const AppSidebar = () => {
@@ -33,6 +30,7 @@ const AppSidebar = () => {
         theme="dark"
         inlineCollapsed={false}
         items={items}
+        defaultChecked="dashboard"
       />
   );
 };

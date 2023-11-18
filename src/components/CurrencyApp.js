@@ -1,55 +1,52 @@
 import React from 'react'
-import { Spin, Table, Tag } from 'antd';
+import { Button, Table, Tag } from 'antd';
 import { Box } from '@mui/material';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import { DeleteFilled, EditFilled } from '@ant-design/icons';
 
-const CurrencyApp = ({Crypto}) => {
+const CurrencyApp = ({onDeleting, onEditing, budgetData}) => {
 const columns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: (text) => <a>{text}</a>,
+    title: 'Amount',
+    dataIndex: 'amount',
+    key: 'amount',
   },
   {
-    title: 'Symbol',
-    dataIndex: 'symbol',
-    key: 'symbol',
+    title: 'Date',
+    dataIndex: 'date',
+    key: 'date',
   },
   {
-    title: 'Price',
-    dataIndex: 'price',
-    key: 'price',
+    title: 'Category',
+    key: 'category',
+    dataIndex: 'category',
+    render: (_, { category }) => {
+      return(
+            category==="expenses"?
+              <Tag color="volcano" key={category}>{category}</Tag>:
+              <Tag color="green" key={category}>{category}</Tag>
+      )
+    },
   },
   {
-    title: 'Last 24h',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag < 0 ? 'volcano' : 'green';
-          return (
-            <Tag color={color} key={tag}>
-              {tag}
-            </Tag>
-          );
-        })}
-      </>
-    ),
+    title: 'Description',
+    dataIndex: 'description',
+    key: 'description',
+  },
+  {
+    title: 'Edit/delete',
+    key: 'edit',
+    dataIndex: 'edit',
+    render: (_, record)=>{
+      return(
+        <>
+          <Button onClick={()=>onEditing(record)} shape="circle" icon={<EditFilled />} />
+          <Button onClick={()=>onDeleting(record)} shape="circle" icon={<DeleteFilled />} />
+        </>
+      )
+    }
   },
 ];
-const data2 = []
-Object.values(Crypto).map((currency)=>{
-  data2.push({
-      key: currency.id,
-      name: currency.name,
-      symbol: currency.symbol,
-      price: currency.quote.USD.price,
-      tags: [currency.quote.USD.volume_change_24h],
-  })
-  return 0
-})
 const Wrapper = styled(Box)({
   backgroundColor: 'white',
   padding: 10,
@@ -67,10 +64,7 @@ const Wrapper = styled(Box)({
 });
   return (
     <Wrapper>
-      {
-        Crypto===""?<Spin />:<Table columns={columns} dataSource={data2} pagination={{defaultPageSize:10}} />
-      }
-        
+        <Table columns={columns} dataSource={budgetData} pagination={{defaultPageSize:10}} />        
     </Wrapper>
   )
 }
