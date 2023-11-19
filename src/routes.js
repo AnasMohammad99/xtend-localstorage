@@ -1,12 +1,10 @@
 import React from 'react'
 import { Route, Routes, Navigate } from "react-router-dom";
 import AppDashboard from './components/Dashboard';
-import CurrencyApp from './components/CurrencyApp';
+import BudgetApp from './components/BudgetApp';
 export const AppRoute = {
   dashboard: `/dashboard`,
-  news: `/news`,
-  weather: `/weather`,
-  currency:`/currency`
+  budget:`/budget`
 };
 const AppRoutes = ({onDeleting, onEditing, budgetData}) => {
 
@@ -19,9 +17,9 @@ const AppRoutes = ({onDeleting, onEditing, budgetData}) => {
         element={<AppDashboard />}
       />
       <Route
-        path={AppRoute.currency}
+        path={AppRoute.budget}
         exact
-        element={<CurrencyApp onDeleting={onDeleting} onEditing={onEditing} budgetData={budgetData} />}
+        element={<BudgetApp onDeleting={onDeleting} onEditing={onEditing} budgetData={budgetData} />}
       />
       <Route
         path="*"

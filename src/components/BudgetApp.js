@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import styled from '@emotion/styled';
 import { DeleteFilled, EditFilled } from '@ant-design/icons';
 
-const CurrencyApp = ({onDeleting, onEditing, budgetData}) => {
+const BudgetApp = ({onDeleting, onEditing, budgetData}) => {
 const columns = [
   {
     title: 'Amount',
@@ -69,4 +69,4 @@ const Wrapper = styled(Box)({
   )
 }
 
-export default CurrencyApp
+export default BudgetApp

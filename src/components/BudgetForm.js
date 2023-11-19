@@ -4,20 +4,25 @@ import {  MenuItem, Select, Stack, TextField } from '@mui/material';
 const BudgetForm = ({setBudgetData, budgetData, amount, category, date, description, setAmount, setCategory, setDate, setDescription, budegetKey, setBudegetKey, handleCancel}) => {
   const onFinish = (e) => {
     e.preventDefault()
-    if(budegetKey===""){
-      setBudgetData([...budgetData,{key:`${new Date().getTime()}`,amount, category, date, description}])
-      message.success('Submit success!');
+    if(+amount<0){
+      message.error('amount must be positive')
     } else {
-      let newData = [...budgetData.filter((e)=>e.key !== budegetKey),{key:budegetKey,amount, category, date, description}]
-      setBudgetData(newData.sort((a,b)=>+a.key - +b.key))
-      console.log(budgetData);
+      if(budegetKey===""){
+        setBudgetData([...budgetData,{key:`${new Date().getTime()}`,amount, category, date, description}])
+        message.success('Submit success!');
+      } else {
+        let newData = [...budgetData.filter((e)=>e.key !== budegetKey),{key:budegetKey,amount, category, date, description}]
+        setBudgetData(newData.sort((a,b)=>+a.key - +b.key))
+        console.log(budgetData);
+      }
+      setAmount("")
+      setCategory("")
+      setDate("")
+      setDescription("")
+      setBudegetKey("")
+      handleCancel()
     }
-    setAmount("")
-    setCategory("")
-    setDate("")
-    setDescription("")
-    setBudegetKey("")
-    handleCancel()
+
   };
   return (
     <form onSubmit={onFinish}>
